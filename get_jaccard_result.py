@@ -73,6 +73,7 @@ def write_csv(sentence, num):
         url_list.append(get_url(demo['subtitle_id'][i]))
 
     output = {'subtitle' : sentence_list, 'start' : start, 'end' : end, 'url' : url_list}
+    print('-------------------------------------output')
 
     print('output : ', output)
 
@@ -207,7 +208,7 @@ def make_new_json():
 
 
 if __name__ != "__main__":
-    con = sqlite3.connect('data/youtubing.db')
+    con = sqlite3.connect('data/youtubing.db', check_same_thread=False)
     sql = "SELECT * FROM sentence_meta"
     demo = pd.read_sql(sql, con)
 
